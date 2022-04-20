@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pegelogo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pegelogo
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: /metrics
+        prometheus.io/port: "80"
+      labels:
+        app: pegelogo
+    spec:
+      containers:
+      - name: pegelogo
+        image: acthiago/api-pedelogo:v1teste
+      
+        ports:
+        - containerPort: 80
+        imagePullPolicy: Always
+        env:
+          - name: Mongo__Host
+            value: "mongo-service"
+          - name: Mongo__Port
+            value: "27017"
+          - name: Mongo__DataBase
+            value: "admin"
+        envFrom:
+          - configMapRef:
+              name: configmap-mongodb
+      imagePullSecrets:
+        - name: dcr-kubedev
+        

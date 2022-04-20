@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+spec:
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/path: /metrics
+        prometheus.io/port: "9216"
+      labels:
+        app: mongodb 
+    spec:
+    
+      containers:
+      - name: mongodb
+        image: mongo:4.2.8
+        resources: 
+          
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+          - mountPath: /data/db
+            name: mongo-data
+        envFrom:
+          - configMapRef:
+              name: configmap-mongodb
+
+      - name: mongodb-exporter
+        image: ssheehy/mongodb-exporter:0.11.0
+        ports:
+        - containerPort: 9216
+          name: exporter
+        env:
+          - name: "MONGODB_URI"
+            value: "mongodb://mongouser:mongopwd@localhost:27017"
+      volumes:
+        - name: mongo-data
+          persistentVolumeClaim:
+            claimName: dci-pvc
