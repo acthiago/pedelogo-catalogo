@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: pegelogo
-        image: acthiago/api-pedelogo:v1teste
+        image: acthiago/api-pedelogo:{{tag}}
       
         ports:
         - containerPort: 80
