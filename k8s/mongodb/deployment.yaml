@@ -9,10 +9,6 @@ spec:
       app: mongodb
   template:
     metadata:
-      annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/path: /metrics
-        prometheus.io/port: "9216"
       labels:
         app: mongodb 
     spec:
@@ -21,6 +17,7 @@ spec:
       - name: mongodb
         image: mongo:4.2.8
         resources: 
+        {}
           
         ports:
         - containerPort: 27017

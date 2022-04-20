@@ -10,10 +10,6 @@ spec:
       app: pegelogo
   template:
     metadata:
-      annotations:
-        prometheus.io/scrape: "true"
-        prometheus.io/path: /metrics
-        prometheus.io/port: "80"
       labels:
         app: pegelogo
     spec:
@@ -34,6 +30,5 @@ spec:
         envFrom:
           - configMapRef:
               name: configmap-mongodb
-      imagePullSecrets:
-        - name: dcr-kubedev
+
         
