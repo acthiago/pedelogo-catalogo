@@ -2,6 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: api-ingress
+  namespace: api
 spec:
   rules:
   - host: api.164.90.246.125.nip.io
