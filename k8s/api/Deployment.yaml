@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: aaps/v1
 kind: Deployment
 metadata:
   name: pegelogo
