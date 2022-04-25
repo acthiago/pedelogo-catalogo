@@ -1,19 +1,15 @@
-apiVersion: networking.k8s.io/v1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
-  name: api-ingress
+  name: ingressapi
   namespace: api
-spec:
-  rules:
-  - host: api.164.90.246.125.nip.io
-    http:
-      paths:
-      - pathType: Prefix
-        path: /
-        backend:
-          service:
-            name: api-service
-            port: 
-              number: 80
   
-  ingressClassName: nginx
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: host(`api.143.244.208.103.nip.io`)
+    kind: Rule
+    services: 
+    - name: api-service
+      port: 80
