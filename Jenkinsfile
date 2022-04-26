@@ -41,11 +41,11 @@ pipeline {
             steps{
                 sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/api/Deployment.yaml'
                 sh 'cat ./k8s/api/Deployment.yaml'
-                sh 'apt update'
-                sh 'apt install curl'
-                sh 'curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"'
+                sh 'sudo apt update'
+                sh 'sudo apt install curl'
+                sh 'sudo curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"'
                 sh 'echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check'
-                sh 'install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl'
+                sh 'sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl'
                 
                 withCredentials([kubeconfigContent(credentialsId : "$Kubeconfig" ,variable : 'KUBECONFIG')]) {
                     sh '''
