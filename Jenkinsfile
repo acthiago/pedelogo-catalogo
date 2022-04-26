@@ -39,8 +39,8 @@ pipeline {
                 tag_version = "${env.BUILD_ID}"
             }
             steps{
-                sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/api.yaml'
-                sh 'cat ./k8s/api.yaml'
+                sh 'sed -i "s/{{tag}}/$tag_version/g" ./k8s/api/Deployment.yaml'
+                sh 'cat ./k8s/api/Deployment.yaml'
 
             }
         }
