@@ -30,16 +30,16 @@ pipeline {
         }
 
         stage('Deploy Kubernetes') {
-            steps{
-                agent {
-                    kubernetes {
-                        cloud 'kubernetes-hmg2'
+            agent {
+                kubernetes {
+                    cloud 'kubernetes-hmg2'
                     }
                 }
-                environment {
-                    tag_version = "${env.BUILD_ID}"
-            
-                }
+            environment {
+                tag_version = "${env.BUILD_ID}"
+            }
+            steps{
+
             }
         }
     }
