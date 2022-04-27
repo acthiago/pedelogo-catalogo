@@ -47,9 +47,9 @@ namespace PedeLogo.Catalogo.Api
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v3", new OpenApiInfo
+                c.SwaggerDoc("v4", new OpenApiInfo
                 {
-                    Version = "v3",
+                    Version = "v4",
                     Title = "API para cadastro de Produtos",
                     Description = "API para cadastro de Produtos"
                 });
