@@ -7,7 +7,7 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: pedeelogo
+      app: pedelogo
   template:
     metadata:
       labels:
