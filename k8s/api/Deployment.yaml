@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pegelogo
+  name: pedelogo
   namespace: api
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: pegelogo
+      app: pedeelogo
   template:
     metadata:
       labels:
-        app: pegelogo
+        app: pedelogo
     spec:
       containers:
-      - name: pegelogo
+      - name: pedelogo
         image: acthiago/api-pedelogo:{{tag}}
       
         ports:
