@@ -1,0 +1,1 @@
+A versão do plguin do jenkins para o kubernetes é a versão 1.0

@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingresskiali
+  namespace: istio-system
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: host(`kiali.143.244.208.103.nip.io`)
+    kind: Rule
+    services: 
+    - name: kiali
+      port: 20001

@@ -1,0 +1,14 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingressgrafana
+  namespace: istio-system
+spec:
+  entryPoints:
+    - web
+  routes:
+  - match: host(`grafana.143.244.208.103.nip.io`)
+    kind: Rule
+    services: 
+    - name: grafana
+      port: 3000
