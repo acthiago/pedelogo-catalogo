@@ -1,0 +1,50 @@
+Name:         bookinfo
+Namespace:    default
+Labels:       <none>
+Annotations:  <none>
+API Version:  networking.istio.io/v1beta1
+Kind:         VirtualService
+Metadata:
+  Creation Timestamp:  2022-04-22T19:09:54Z
+  Generation:          1
+  Managed Fields:
+    API Version:  networking.istio.io/v1alpha3
+    Fields Type:  FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .:
+          f:kubectl.kubernetes.io/last-applied-configuration:
+      f:spec:
+        .:
+        f:gateways:
+        f:hosts:
+        f:http:
+    Manager:         kubectl-client-side-apply
+    Operation:       Update
+    Time:            2022-04-22T19:09:54Z
+  Resource Version:  5067
+  UID:               39608cee-07d7-4305-9644-96b319615793
+Spec:
+  Gateways:
+    bookinfo-gateway
+  Hosts:
+    *
+  Http:
+    Match:
+      Uri:
+        Exact:  /productpage
+      Uri:
+        Prefix:  /static
+      Uri:
+        Exact:  /login
+      Uri:
+        Exact:  /logout
+      Uri:
+        Prefix:  /api/v1/products
+    Route:
+      Destination:
+        Host:  productpage
+        Port:
+          Number:  9080
+Events:            <none>
