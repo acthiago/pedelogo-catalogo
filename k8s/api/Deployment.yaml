@@ -16,7 +16,7 @@ spec:
       containers:
       - name: pedelogo
         image: acthiago/api-pedelogo:{{tag}}
-      
+        resources: {}
         ports:
         - containerPort: 80
         imagePullPolicy: Always
@@ -32,3 +32,4 @@ spec:
               name: configmap-mongodb
 
         
+
